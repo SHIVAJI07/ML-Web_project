@@ -56,12 +56,17 @@ def predict():
 
 @app.route('/predictdiabetes', methods=["GET", "POST"])
 def predictdiabetes():
+    str1=""
     int_features = [float(x) for x in request.form.values()]
     final_features = [np.array(int_features)]
     prediction = regressordiabetes.predict(final_features)
     output = round(prediction[0], 2)
+    if output==1:
+        str1="YES"
+    else:
+        str1="NO"
 
-    return render_template('diabetes.html', params=params,prediction_text='CO2    Emission of the vehicle is :{}'.format(output))
+    return render_template('diabetes.html', params=params,prediction_text=' Do I have Diabetes? :{}'.format(str1))
 
 
 @app.route('/carbon', methods=["GET", "POST"])
@@ -75,7 +80,7 @@ def predictcarbon():
     final_features = [np.array(int_features)]
     prediction = regressorcarbon.predict(final_features)
     output = round(prediction[0], 2)
-    return render_template('carbon.html', params=params,prediction_text='CO2    Emission of the vehicle is :{}'.format(output))
+    return render_template('carbon.html', params=params,prediction_text='CO2 Emission of the vehicle is :{}'.format(output))
 
 
 @app.route('/heart', methods=["GET", "POST"])
@@ -89,8 +94,13 @@ def predictheart():
     final_features = [np.array(int_features)]
     prediction = regressorheart.predict(final_features)
     output = round(prediction[0], 2)
+    str1=""
+    if output==1:
+        str1="YES"
+    else:
+        str1="NO"
 
-    return render_template('heart.html', params=params,prediction_text='CO2    Emission of the vehicle is :{}'.format(output))
+    return render_template('heart.html', params=params,prediction_text='Do I have Heart Disease? :{}'.format(str1))
 
 
 @app.route('/car', methods=["GET", "POST"])
@@ -104,7 +114,7 @@ def predictcar():
     final_features = [np.array(int_features)]
     prediction = regressorcar.predict(final_features)
     output = round(prediction[0], 2)
-    return render_template('car.html', params=params,prediction_text='CO2    Emission of the vehicle is :{}'.format(output))
+    return render_template('car.html', params=params,prediction_text='Car Price is (in lakh) :{}'.format(output))
 
 
 @app.route('/insurance', methods=["GET", "POST"])
@@ -118,7 +128,7 @@ def predictinsurance():
     final_features = [np.array(int_features)]
     prediction = regressorinsurance.predict(final_features)
     output = round(prediction[0], 2)
-    return render_template('insurance.html', params=params,prediction_text='CO2    Emission of the vehicle is :{}'.format(output))
+    return render_template('insurance.html', params=params,prediction_text='Medical Insurance Cost is :{}'.format(output))
 
 
 @app.route('/about')
