@@ -1,6 +1,5 @@
 import numpy as np
 import pandas as pd
-import pickle
 from sklearn.linear_model import LogisticRegression
 df = pd.read_csv("data/heart.csv")
 
