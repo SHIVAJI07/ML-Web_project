@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.linear_model import LinearRegression
-import pickle
+
 
 
 df = pd.read_csv("data/FuelConsumption.csv")
