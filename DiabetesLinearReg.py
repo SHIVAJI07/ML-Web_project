@@ -1,6 +1,4 @@
 import pandas as pd
-from sklearn.linear_model import LinearRegression
-import pickle
 from sklearn import svm
 df = pd.read_csv("data/diabetes.csv")
 #use required features
